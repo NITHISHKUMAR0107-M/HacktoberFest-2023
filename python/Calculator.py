@@ -1,11 +1,14 @@
 def add(a, b):
     return int(a + b)
 
+
 def sub(a, b):
     return int(a - b)
 
+
 def mul(a, b):
     return int(a * b)
+
 
 def div(a, b):
     try:
@@ -16,6 +19,17 @@ def div(a, b):
     except ZeroDivisionError:
         return "Division by zero is not allowed"
 
+
+def mod(a, b):
+    try:
+        if b != 0:
+            return int(a % b)
+        else:
+            return "Division by zero is not allowed"
+    except ZeroDivisionError:
+        return "Division by zero is not allowed"
+
+
 def user_choice():
     while True:
         print("Calculator Menu:")
@@ -23,15 +37,16 @@ def user_choice():
         print("2. Multiplication")
         print("3. Subtraction")
         print("4. Division")
-        print("5. Quit")
+        print("5. Modulus")
+        print("6. Quit")
 
-        user_input = input("Enter your choice (1-5): ")
-        
+        user_input = input("Enter your choice (1-6): ")
+
         if user_input.isdigit():
             user_input = int(user_input)
-            
-            if 1 <= user_input <= 5:
-                if user_input == 5:
+
+            if 1 <= user_input <= 6:
+                if user_input == 6:
                     print("Exiting the calculator. Goodbye!")
                     break
 
@@ -53,12 +68,18 @@ def user_choice():
                         print("Result:", result)
                         if result == "Division by zero is not allowed":
                             print("Note: Division by zero is not allowed.")
+                    elif user_input == 5:
+                        result = mod(a, b)
+                        print("Result:", result)
+                        if result == "Division by zero is not allowed":
+                            print("Note: Division by zero is not allowed.")
                 except Exception as e:
                     print(f"An error occurred: {e}")
-                    
+
             else:
-                print("Please enter a number between 1 and 5.")
+                print("Please enter a number between 1 and 6.")
         else:
             print("Please enter a valid number.")
+
 
 user_choice()
